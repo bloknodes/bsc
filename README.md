@@ -49,3 +49,4 @@ bsc --config config.toml --datadir ~/data
 
 ## Resources
 - [https://github.com/bnb-chain/bsc](https://github.com/bnb-chain/bsc)
+- [https://docs.bnbchain.org/docs/overview](https://docs.bnbchain.org/docs/overview)
