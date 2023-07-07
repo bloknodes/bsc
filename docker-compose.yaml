@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  bsc:
+    build: . 
+    container_name: bsc
+    hostname: bsc
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./data/testnet:/blockchain/data
+    stop_signal: SIGINT
+    stop_grace_period: 2m
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"      
