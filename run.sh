@@ -3,6 +3,7 @@
 if [ -d '/blockchain/data/geth/chaindata' ]
   then
     echo "already initialized"
+    bsc --config /blockchain/config/config.toml --datadir /blockchain/data
   else
     echo "initializing with genesis"
     bsc --config /blockchain/config/config.toml --datadir /blockchain/data init /blockchain/config/genesis.json
