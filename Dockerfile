@@ -12,8 +12,8 @@ RUN wget -O bsc "https://github.com/bnb-chain/bsc/releases/download/v${BSC_VERSI
     cp bsc /tmp/store/bsc && \
     wget https://github.com/bnb-chain/bsc/releases/download/v${BSC_VERSION}/testnet.zip && \
     unzip testnet.zip && \
-    cp genesis.json /tmp/store/genesis.json && \
-    cp config.toml /tmp/store/config.toml
+    cp genesis.json /tmp/store/genesis.json 
+    # cp config.toml /tmp/store/config.toml
 
 COPY run.sh /tmp/store/run.sh
 
@@ -21,9 +21,9 @@ FROM busybox:latest
 RUN mkdir -p /blockchain/config /blockchain/data
 COPY --from=builder /tmp/store/bsc /usr/bin/bsc
 COPY --from=builder /tmp/store/genesis.json /blockchain/config/genesis.json
-COPY --from=builder /tmp/store/config.toml /blockchain/config/config.toml
+# COPY --from=builder /tmp/store/config.toml /blockchain/config/config.toml
 COPY --from=builder /tmp/store/run.sh /usr/bin/run.sh
-# COPY config.toml /blockchain/config/config.toml
+COPY configs/testnet/config.toml /blockchain/config/config.toml
 
 RUN chmod +x /usr/bin/run.sh /usr/bin/bsc
 
